@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kaizen - Login</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+
+    /* ===========================
+       RESET & BASE
+    =========================== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #050505;
+    }
+
+    /* ===========================
+       PHONE WRAPPER
+    =========================== */
+    .phone {
+      position: relative;
+      width: 390px;
+      height: 844px;
+      background: linear-gradient(180deg, #050505 0%, #051a0d 60%, #0a381a 100%);
+      overflow: hidden;
+      border-radius: 40px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+    }
+
+    /* ===========================
+       BACKGROUND BLOBS
+    =========================== */
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+    }
+
+    .blob-1 {
+      width: 280px;
+      height: 280px;
+      top: -50px;
+      left: -60px;
+      background: rgba(13, 102, 38, 0.2);
+      filter: blur(30px);
+    }
+
+    .blob-2 {
+      width: 220px;
+      height: 220px;
+      top: 620px;
+      left: 210px;
+      background: rgba(204, 153, 26, 0.1);
+      filter: blur(30px);
+    }
+
+    /* ===========================
+       LOGO BADGE (KZ)
+    =========================== */
+    .logo-badge {
+      position: absolute;
+      width: 76px;
+      height: 76px;
+      top: 78px;
+      left: 157px;
+      border-radius: 18px;
+      background: linear-gradient(90deg, #f2bf26, #a6730d);
+      box-shadow: 0 8px 22px rgba(229, 178, 26, 0.55);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .logo-badge span {
+      font-size: 28px;
+      font-weight: 700;
+      color: #0d0d0d;
+      letter-spacing: 1px;
+    }
+
+    /* ===========================
+       APP NAME & TAGLINE
+    =========================== */
+    .app-name {
+      position: absolute;
+      top: 172px;
+      width: 390px;
+      text-align: center;
+      font-size: 30px;
+      font-weight: 700;
+      color: #f5f5f5;
+      letter-spacing: 5px;
+    }
+
+    .tagline {
+      position: absolute;
+      top: 218px;
+      width: 390px;
+      text-align: center;
+      font-size: 12px;
+      font-weight: 300;
+      color: #80e599;
+    }
+
+    /* ===========================
+       LOGIN CARD
+    =========================== */
+    .login-card {
+      position: absolute;
+      top: 285px;
+      left: 30px;
+      width: 330px;
+      height: 360px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(229, 184, 31, 0.3);
+      border-radius: 24px;
+      overflow: hidden;
+      padding: 28px 24px;
+      backdrop-filter: blur(10px);
+    }
+
+    .card-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+
+    .card-subtitle {
+      font-size: 12px;
+      font-weight: 400;
+      color: #80c799;
+      margin-bottom: 28px;
+    }
+
+    /* ===========================
+       INPUT FIELDS
+    =========================== */
+    .input-group {
+      margin-bottom: 16px;
+    }
+
+    .input-label {
+      display: block;
+      font-size: 11px;
+      font-weight: 600;
+      color: #e5b81f;
+      margin-bottom: 8px;
+    }
+
+    .input-field {
+      width: 100%;
+      height: 44px;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 12px;
+      padding: 0 14px;
+      font-size: 13px;
+      font-family: 'Inter', sans-serif;
+      color: #ffffff;
+      outline: none;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .input-field::placeholder {
+      color: rgba(255, 255, 255, 0.28);
+    }
+
+    /* Input glow effect when clicked */
+    .input-field:focus {
+      border-color: rgba(229, 184, 31, 0.6);
+      box-shadow: 0 0 12px rgba(229, 184, 31, 0.2);
+    }
+
+    /* ===========================
+       LOGIN BUTTON
+    =========================== */
+    .login-btn {
+      width: 100%;
+      height: 48px;
+      margin-top: 24px;
+      background: linear-gradient(90deg, #f2c224, #a67a0f);
+      border: none;
+      border-radius: 14px;
+      font-size: 15px;
+      font-weight: 700;
+      font-family: 'Inter', sans-serif;
+      color: #0d0d0d;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(229, 178, 26, 0.5);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    /* Button hover effect */
+    .login-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(229, 178, 26, 0.65);
+    }
+
+    /* Button click effect */
+    .login-btn:active {
+      transform: translateY(0px);
+      box-shadow: 0 4px 12px rgba(229, 178, 26, 0.4);
+    }
+
+    /* ===========================
+       SIGN UP TEXT
+    =========================== */
+    .signup-text {
+      position: absolute;
+      top: 672px;
+      left: 30px;
+      width: 330px;
+      text-align: center;
+      font-size: 12px;
+      font-weight: 400;
+      color: #a6a6a6;
+    }
+
+    .signup-text a {
+      color: #e5b81f;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .signup-text a:hover {
+      text-decoration: underline;
+    }
+
+    /*forgot password */
+    .forgot_password-text {
+      position: absolute;
+      top: 700px;
+      left: 30px;
+      width: 330px;
+      text-align: center;
+      font-size: 12px;
+      font-weight: 400;
+      color: #a6a6a6;
+    }
+
+    .forgot_password-text a {
+      color: #e5b81f;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .forgot_password-text a:hover {
+      text-decoration: underline;
+    }
+
+
+
+    /* ===========================
+       BOTTOM GOLD ACCENT LINE
+    =========================== */
+    .accent-line {
+      position: absolute;
+      bottom: 22px;
+      left: 145px;
+      width: 100px;
+      height: 4px;
+      border-radius: 2px;
+      background: linear-gradient(90deg,
+        rgba(229, 184, 31, 0) 0%,
+        #e5b81f 50%,
+        rgba(229, 184, 31, 0) 100%
+      );
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="phone">
+
+    <!-- Background Blobs -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+
+    <!-- Logo Badge -->
+    <div class="logo-badge">
+      <span>KZ</span>
+    </div>
+
+    <!-- App Name -->
+    <p class="app-name">KAIZEN</p>
+
+    <!-- Tagline -->
+    <p class="tagline">Your Daily Planner for Growth &amp; Progress</p>
+
+    <!-- Login Card -->
+    <div class="login-card">
+
+      <p class="card-title">Plan Your Day</p>
+      <p class="card-subtitle">Login to continue your journey</p>
+
+      <!-- Email Input -->
+      <div class="input-group">
+        <label class="input-label" for="email">Email Address</label>
+        <input
+          class="input-field"
+          type="email"
+          id="email"
+          placeholder="you@email.com"
+        />
+      </div>
+
+      <!-- Password Input -->
+      <div class="input-group">
+        <label class="input-label" for="password">Password</label>
+        <input
+          class="input-field"
+          type="password"
+          id="password"
+          placeholder="••••••••"
+        />
+      </div>
+
+      <!-- Login Button -->
+      <button class="login-btn">Log In</button>
+
+    </div>
+
+    <!-- Sign Up and Forgot Password Text -->
+    <p class="signup-text">
+      Don't have an account? <a href="#">Sign Up</a>
+    </p>
+
+          <p class="forgot_password-text">
+      Forgot Password? <a href="#">Yes</a>
+    </p>
+
+
+    <!-- Bottom Accent Line -->
+    <div class="accent-line"></div>
+
+  </div>
+
+</body>
+</html>
